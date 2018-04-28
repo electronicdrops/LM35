@@ -1,0 +1,15 @@
+
+LM35	KEYWORD1
+
+getTemperature		KEYWORD2
+getMilivolts 		KEYWORD2
+setResolution		KEYWORD2
+setAdcReference		KEYWORD2
+setVoltageReference	KEYWORD2
+setHighLimitAlarm	KEYWORD2
+setLowLimitAlarm	KEYWORD2
+getHighAlarm		KEYWORD2
+getLowAlarm		KEYWORD2
+
+
+
