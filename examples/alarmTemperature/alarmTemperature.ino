@@ -21,7 +21,6 @@
 
 #include "LM35.h"
 
-
 LM35 sensor = LM35(A0);
 
 int  lamp_alarm = 10;
@@ -58,12 +57,9 @@ void loop() {
       digitalWrite(lamp_alarm,LOW);
       Serial.println("Normal Operation");
     }
-  }
-
-  
+  } 
 
   Serial.println();
-
 
 delay(1000);
 

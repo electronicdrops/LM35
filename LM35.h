@@ -17,15 +17,13 @@
  * 
  */
 
-
 #ifndef LM35_H
 #define LM35_H
-
 
 #include "Arduino.h"
 
 #define LM35_RESOLUTION 16
-#define LM35_ADC_REF 1024.0
+#define LM35_ADC_REF 1024
 #define LM35_VOL_REF 5.0
 
 #define LM35_MAX_TEMPERATURE 150
@@ -34,51 +32,42 @@
 class LM35{
 
   private:
-    float temperature;
-    float milivolts;
+    float m_temperature;
+    float m_milivolts;
 
-    int sensor_pin;
-    int resolution;
-    int adc_reference;
-    float voltage_reference;
+    int m_sensor_pin;
+    int m_resolution{LM35_RESOLUTION};
+    int m_adc_reference{LM35_ADC_REF};
+    float m_voltage_reference{LM35_VOL_REF};
 
-    float tempAlarmHigh;
-    float tempAlarmLow;
-    boolean alarmHigh;
-    boolean alarmLow;
+    float m_temp_alarm_high{LM35_MAX_TEMPERATURE};
+    float m_temp_alarm_low{LM35_MIN_TEMPERATURE};
+    boolean m_alarm_high;
+    boolean m_alarm_low;
 
+    float getMilivolts();
     void checkAlarm();
 
   public:
-
-
-    LM35(int pin_, int resolution_= LM35_RESOLUTION);
-    LM35(int pin_, int resolution_, int adc_, float voltage_); 
+    ~LM35();
+    LM35(int t_pin);
+    LM35(int t_pin, int t_resolution, int t_adc, float t_voltage); 
     
-    float getTemperature(char scale='C');
-    float getMilivolts();
+    float getTemperature();
+    float getTemperature(char scale);
     
-    void setPin(int pin_);
-    boolean setResolution(int resolution_);
-    void setAdcReference(int adc_);
-    void setVoltageReference(float voltage_);
+    void setPin(int t_pin);
+    boolean setResolution(int t_resolution);
+    void setAdcReference(int t_adc);
+    void setVoltageReference(float t_voltage);
 
-    boolean setHighLimitAlarm(float temp);
-    boolean setLowLimitAlarm(float temp);
+    boolean setHighLimitAlarm(float t_temp);
+    boolean setLowLimitAlarm(float t_temp);
     boolean getHighAlarm();
     boolean getLowAlarm();
 
-    
     void update();
-    void begin();
-  
+    void begin();  
 };
-
-
-
-
-
-
-
 
 #endif

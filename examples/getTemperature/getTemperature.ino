@@ -18,9 +18,7 @@
  * 
  */
 
-
-#include <LM35.h>
-
+#include "LM35.h"
 
 LM35 sensor = LM35(A0);
 
@@ -44,7 +42,6 @@ Serial.print(sensor.getTemperature('K'));
 Serial.println('K');
 
 Serial.println();
-
 
 delay(1000);
 
